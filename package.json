@@ -1,0 +1,75 @@
+{
+  "name": "vibecheck",
+  "displayName": "VibeCheck Technologies",
+  "description": "Enterprise-grade code review. Zero technical value.",
+  "version": "1.0.0",
+  "publisher": "vibecheck-technologies",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Linters"],
+  "keywords": ["code review", "gen z", "vibes", "enterprise"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vibecheck.reviewSelection",
+        "title": "VibeCheck: Review This Code"
+      },
+      {
+        "command": "vibecheck.reviewFile",
+        "title": "VibeCheck: Review Entire File"
+      },
+      {
+        "command": "vibecheck.setApiKey",
+        "title": "VibeCheck: Set Gemini API Key"
+      }
+    ],
+    "configuration": {
+      "title": "VibeCheck Technologies",
+      "properties": {
+        "vibecheck.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Google Gemini API key. Get one free at aistudio.google.com.",
+          "scope": "application"
+        },
+        "vibecheck.hoverEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable hover tooltips. Dave will review code you hover over."
+        },
+        "vibecheck.hoverDelayMs": {
+          "type": "number",
+          "default": 800,
+          "description": "How long (ms) to hover before Dave weighs in."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vibecheck.reviewSelection",
+          "when": "editorHasSelection",
+          "group": "vibecheck"
+        },
+        {
+          "command": "vibecheck.reviewFile",
+          "group": "vibecheck"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
