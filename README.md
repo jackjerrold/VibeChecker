@@ -1,4 +1,4 @@
-# 🧠 VibeCheck Technologies
+# VibeCheck Technologies
 **Enterprise Code Intelligence Platform**
 *No technical feedback was given or implied*
 
